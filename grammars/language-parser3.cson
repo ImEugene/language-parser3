@@ -1,0 +1,87 @@
+'scopeName': 'source.parser3'
+'name': 'Parser3'
+'fileTypes': ['p']
+'patterns': [
+    {
+        'match': '(and|or|eq|ne|not|&&|\\|\\||\\!|\\!=|==)'
+        'name': 'parser.operator.logical'
+    }
+    {
+        'match': '(^#(.*))'
+        'name': 'parser3.comment'
+    }
+    {
+        'include': '#comment_multiline'
+    }
+    {
+        'include': '#file'
+    }
+    {
+        'include': '#function'
+    }
+    {
+        'include': '#function_call'
+    }
+    {
+        'include': '#operator'
+    }
+    {
+        'include': '#variables'
+    }
+    {
+        'include': '#escaped'
+    }
+    {
+        'include': 'text.html.basic'
+    }
+    {
+        'include': 'text.todo'
+    }
+    {
+        'include': ' text.xml'
+    }
+]
+'repository':
+    'file':
+        'patterns': [
+            {
+                'match': '[A-Za-z0-9_-]+\\.p'
+                'name': 'parser3.file'
+            }
+        ]
+    'function':
+        'patterns': [
+            {
+                'match': '@(.*)(?=\\[(.*)\\])'
+                'name': 'parser3.function'
+            }
+        ]
+    'function_call':
+        'patterns': [
+            {
+                'match': '\\^([A-Za-z0-9_\\-\\:\\.]+)(?=(\\[|\\{|\\()(.*)(\\]|\\}|\\))?)'
+                'name': 'parser3.function.call'
+            }
+        ]
+    'operator':
+        'patterns': [
+            'match': '\\b(\\^if|connect|CLASS|table|create|match|void:sql|table::sql|mod|for|def|true|false)\\b'
+            'name': 'parser3.operator'
+        ]
+    'variables':
+        'patterns': [
+            'match': '\\$(\\{)?[A-Za-z0-9_\\-\\:\\.]+(\\})?'
+            'name': 'parser3.variable'
+        ]
+    'comment_multiline':
+        'begin': '\\^rem\\{'
+        'captures':
+            '0':
+                'name': 'parser3.comment'
+        'end': '\\}'
+        'name': 'parser3.comment.block'
+    'escaped':
+        'patterns': [
+            'match': '\\^(\\$|\\^)([A-Za-z0-9_\\-\\:\\.]+)?(\\[|\\{|\\()?([A-Za-z0-9_\\-\\:\\.\\$;\\+]+)?(\\]|\\}|\\))?'
+            'name': 'parser3.escaped'
+        ]

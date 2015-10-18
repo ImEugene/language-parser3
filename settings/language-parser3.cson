@@ -1,0 +1,5 @@
+'.source.parser3':
+    'editor':
+        'commentStart': '# '
+        # 'foldStartMarker': '\\{\\s*$'
+        # 'foldEndPattern': '^\\s*\\}'

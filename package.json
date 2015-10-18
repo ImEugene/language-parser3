@@ -1,0 +1,10 @@
+{
+  "name": "language-parser3",
+  "version": "0.0.1",
+  "author": "Im Eugene <im@im-e.ru>",
+  "description": "Syntax highlighting for Parser3",
+  "main": "./lib/language-parser3",
+  "engines": {
+    "atom": "*"
+  }
+}
